@@ -1,6 +1,6 @@
 {
-    "name": "hello-addon",
-    "description": "a node-addon hello-world",
+    "name": "hello--world-addon",
+    "description": "a C++ ABI node-addon hello-world",
     "version": "1.0.0",
     "scripts": {
         "configure": "node-gyp configure",

@@ -4,12 +4,18 @@
 namespace hello {
 
     Napi::String Method(const Napi::CallbackInfo& info){
-        Napi::Env env = info.Env();
-        return Napi::String::New(env, "world");
+        
+        auto parameter = info[0].As<Napi::String>();
+
+        std::string returnValue = "world";
+        if(!parameter.IsUndefined()){
+            returnValue = parameter.Utf8Value() + returnValue;
+        }
+
+        return Napi::String::New(info.Env(), returnValue);
     }
 
     Napi::Function InitHelloWorld(Napi::Env env){
-        Napi::Function hello_function = Napi::Function::New(env, Method);
-        return hello_function;
+        return Napi::Function::New(env, Method);
     }
 } //namespace hello
